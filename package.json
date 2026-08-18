@@ -1,0 +1,44 @@
+{
+  "name": "google-abcd-video-auditor",
+  "version": "1.0.0",
+  "description": "AI-powered Google ABCD video creative diagnostic dashboard",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:web": "vite",
+    "dev:server": "node --watch server/index.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sylviaaa555/Lumen-Writes-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sylviaaa555/Lumen-Writes-1/issues"
+  },
+  "homepage": "https://github.com/Sylviaaa555/Lumen-Writes-1#readme",
+  "dependencies": {
+    "@google/genai": "^2.17.1",
+    "express": "^5.2.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.31.0",
+    "multer": "^2.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.0.5",
+    "concurrently": "^10.0.5",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.1"
+  }
+}
