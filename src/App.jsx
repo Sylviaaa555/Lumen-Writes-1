@@ -24,8 +24,6 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024
 const ACCEPTED_TYPES = ['video/mp4', 'video/webm', 'video/quicktime', 'video/mpeg']
@@ -468,6 +466,10 @@ export default function App() {
     setExporting(true)
     setError('')
     try {
+      const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ])
       const canvas = await html2canvas(reportRef.current, {
         backgroundColor: '#08090d',
         scale: Math.min(window.devicePixelRatio * 1.3, 2.2),
