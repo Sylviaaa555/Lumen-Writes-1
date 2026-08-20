@@ -1,0 +1,15 @@
+{
+  "name": "Google ABCD Video Auditor",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev",
+      "description": "Runs the Vite frontend (http://localhost:5173) and the Express API (http://localhost:3001) together via `npm run dev`. Vite proxies /api requests to the API server. Requires the GEMINI_API_KEY secret for the /api/diagnose flow."
+    }
+  ],
+  "ports": [
+    { "name": "web", "port": 5173 },
+    { "name": "api", "port": 3001 }
+  ]
+}
