@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lumen-ai-gateway",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lumen-ai-gateway",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "UPSTREAM_BASE_URL": "https://api.openai.com/v1",
+    "DEFAULT_MODEL": "gpt-4.1-mini",
+    "ALLOWED_ORIGIN": "",
+    "MODEL_ROUTES_JSON": "{}",
+    "MODEL_PRICING_JSON": "{}"
+  }
+}

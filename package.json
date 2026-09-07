@@ -1,0 +1,35 @@
+{
+  "name": "lumen-ai-gateway",
+  "version": "1.0.0",
+  "description": "Multi-user, OpenAI-compatible AI gateway for Cloudflare Workers",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply lumen-ai-gateway --local",
+    "db:migrate:remote": "wrangler d1 migrations apply lumen-ai-gateway --remote",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sylviaaa555/Lumen-Writes-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sylviaaa555/Lumen-Writes-1/issues"
+  },
+  "homepage": "https://github.com/Sylviaaa555/Lumen-Writes-1#readme",
+  "dependencies": {
+    "hono": "^4.13.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260907.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0",
+    "wrangler": "^4.129.0"
+  }
+}
