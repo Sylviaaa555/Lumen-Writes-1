@@ -19,11 +19,12 @@ export function resolveModel(
   requested: unknown,
   defaultModel: string,
   routesJson: string,
-): string {
+): string | null {
   const routes = parseJsonMap<string>(routesJson);
-  const selected =
-    typeof requested === "string" && requested.trim() ? requested.trim() : defaultModel;
-  return routes[selected] || selected;
+  if (typeof requested !== "string" || !requested.trim()) return defaultModel;
+  const selected = requested.trim();
+  if (selected === defaultModel) return defaultModel;
+  return routes[selected] || null;
 }
 
 export function calculateCostMicrousd(

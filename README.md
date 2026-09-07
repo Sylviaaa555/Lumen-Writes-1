@@ -66,6 +66,9 @@ npm run deploy
 }
 ```
 
+网关只接受这里配置的别名和 `DEFAULT_MODEL`，会拒绝用户自行指定的其他模型，避免意外
+调用高价模型。
+
 `MODEL_PRICING_JSON` 的价格单位是“美元/百万 token”。请从供应商官网复制当前价格：
 
 ```json

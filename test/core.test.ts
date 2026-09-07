@@ -11,10 +11,11 @@ import {
 } from "../src/core";
 
 describe("gateway core", () => {
-  it("resolves aliases while preserving direct model names", () => {
+  it("resolves aliases while rejecting unconfigured model names", () => {
     const routes = JSON.stringify({ economy: "provider-small" });
     expect(resolveModel("economy", "default", routes)).toBe("provider-small");
-    expect(resolveModel("provider-large", "default", routes)).toBe("provider-large");
+    expect(resolveModel("provider-large", "default", routes)).toBeNull();
+    expect(resolveModel("default", "default", routes)).toBe("default");
     expect(resolveModel(undefined, "default", routes)).toBe("default");
   });
 

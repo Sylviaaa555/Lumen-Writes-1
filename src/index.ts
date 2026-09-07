@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import type { MiddlewareHandler } from "hono";
 import {
   bearerToken,
   calculateCostMicrousd,
@@ -45,14 +46,17 @@ app.get("/", (c) =>
 
 app.get("/health", (c) => c.json({ ok: true, service: "lumen-ai-gateway" }));
 
-async function requireAdmin(c: Parameters<typeof app.get>[1] extends never ? never : any, next: () => Promise<void>) {
+const requireAdmin: MiddlewareHandler<{
+  Bindings: Bindings;
+  Variables: Variables;
+}> = async (c, next) => {
   const token = bearerToken(c.req.header("Authorization"));
   if (!c.env.ADMIN_TOKEN || token !== c.env.ADMIN_TOKEN) {
     const error = apiError("Invalid administrator token", 401, "authentication_error");
     return c.json(error.body, error.status);
   }
   await next();
-}
+};
 
 app.use("/admin/*", requireAdmin);
 
@@ -261,6 +265,10 @@ app.post("/v1/chat/completions", async (c) => {
   }
 
   const model = resolveModel(body.model, c.env.DEFAULT_MODEL, c.env.MODEL_ROUTES_JSON);
+  if (!model) {
+    const error = apiError("Requested model is not enabled by this gateway", 403);
+    return c.json(error.body, error.status);
+  }
   const stream = body.stream === true;
   const upstreamBody: Record<string, unknown> = { ...body, model };
   if (stream) {
