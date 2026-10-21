@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Sylviaaa555/Lumen-Writes-1#readme",
   "dependencies": {
-    "hono": "^4.13.7"
+    "hono": "^4.13.11"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260907.1",
